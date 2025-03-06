@@ -82,8 +82,8 @@ def analyze_column(schema_path, public_path, column_name):
 
 
 # Example usage
-schema_path = "survey_results_schema.csv"  # Replace with your schema file path
-public_path = "survey_results_public.csv"  # Replace with your public data file path
+schema_path = "./raw_data/survey_results_schema.csv"  # Replace with your schema file path
+public_path = "./raw_data/survey_results_public.csv"  # Replace with your public data file path
 
 
 

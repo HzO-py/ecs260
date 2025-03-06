@@ -302,9 +302,9 @@ def plot_statistical_tests(results_df):
     plt.show()
 
 # Example usage
-schema_path = "survey_results_schema.csv"  # Replace with your schema file path
-public_path = "survey_results_public.csv"  # Replace with your public data file path
-output_path = "123"  # Output file path
+schema_path = "./raw_data/survey_results_schema.csv"  # Replace with your schema file path
+public_path = "./raw_data/survey_results_public.csv"  # Replace with your public data file path
+output_path = "./output"  # Output file path
 key='123'
 
 ask_gpt_to_generate_professional_responses(schema_path, public_path, output_path, key)# you need to add it
