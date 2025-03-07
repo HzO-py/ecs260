@@ -1,2 +1,4 @@
 dataset/survey_results_public.csv
 models/
+__pycache__/
+.DS_Store
