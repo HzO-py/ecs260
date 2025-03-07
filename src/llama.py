@@ -26,7 +26,7 @@ import re
 # print(response["choices"][0]["text"].strip())
 
 
-LLAMA_API_KEY = "b98b42ad-99f4-4600-8319-e816a9e7d148"  # Replace with your actual key
+LLAMA_API_KEY = "Key"  # Replace with your actual key
 llama = LlamaAPI(LLAMA_API_KEY)
 
 def ask_llama_api(prompt):
