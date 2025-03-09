@@ -6,3 +6,6 @@ anime 5
 apple 6
 arduino 7
 astronomy 8
+askubuntu 9
+aviation 10
+avp 11
