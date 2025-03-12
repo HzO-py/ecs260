@@ -1,14 +1,23 @@
 import openai
+import os
+import random
 from llama_index.core import SimpleDirectoryReader,GPTVectorStoreIndex
 from llama_index.embeddings.openai import OpenAIEmbedding
 
 def generate_response(query):
-    openai.api_key = "key" #replace by your key
+    openai.api_key = "123" #replace by your key
     client = openai
     embed_model = OpenAIEmbedding(client=client)
 
     # documents = ["user_manual_1.txt", "user_manual_2.txt"] # This is your custom data
-    reader = SimpleDirectoryReader("./dataset/example")
+    dataset_folder = "dataset"
+    rag_folder = os.path.join(dataset_folder, "RAG_processed")
+    random_value = random.randint(1, 157)
+
+    filename = f"{random_value}.txt"
+    file_path = os.path.join(rag_folder, filename)
+    reader = SimpleDirectoryReader(input_files=[file_path])
+    # reader = SimpleDirectoryReader("./dataset/example")
     index = GPTVectorStoreIndex.from_documents(reader.load_data())
 
     # Initialize the query engine

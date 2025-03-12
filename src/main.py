@@ -4,7 +4,7 @@ import numpy as np
 from tqdm import tqdm
 from test import chi_square_test, ks_test, shannon_diversity, simpson_index, kl_divergence
 from llm import ask_gpt_to_generate_professional_responses
-
+from RAGinOpenAI import ask_gpt_to_generate_professional_responses_RAG
 
 def compare_distributions(public_path, output_path):
     """Compare the distribution of real vs simulated responses as side-by-side bars and apply statistical tests."""
@@ -168,15 +168,12 @@ def plot_statistical_tests(results_df):
     plt.show()
 
 # Example usage
-# schema_path = "survey_results_schema.csv"  # Replace with your schema file path
-# public_path = "survey_results_public.csv"  # Replace with your public data file path
-# output_path = "123"  # Output file path
-# key='123'
+schema_path = "./dataset/survey_results_schema.csv"  # Replace with your schema file path
+public_path = "./dataset/survey_results_public.csv"  # Replace with your public data file path
+output_path="./result/simulated_responses.csv"   # Output file path
+key="123"
 
 # ask_gpt_to_generate_professional_responses(schema_path, public_path, output_path, key)# you need to add it
 # compare_distributions(public_path, output_path)
-
-
-public_path="survey_results_public.csv"
-output_path="simulated_responses.csv"
+ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, output_path, key)# you need to add it
 compare_distributions(public_path, output_path)
