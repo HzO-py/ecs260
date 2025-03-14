@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,7 +10,7 @@ from RAGinOpenAI import ask_gpt_to_generate_professional_responses_RAG
 def compare_distributions(public_path, output_path):
     """Compare the distribution of real vs simulated responses as side-by-side bars and apply statistical tests."""
     real_df = pd.read_csv(public_path, encoding="utf-8", low_memory=False)
-    simulated_df = pd.read_csv(output_path, encoding="utf-8", low_memory=False)
+    simulated_df = pd.read_csv(os.path.join(output_path,'total_results.csv'), encoding="utf-8", low_memory=False)
     results = []
     
     for qname in tqdm(simulated_df["qname"].unique(), desc="Comparing distributions"):
@@ -168,10 +169,10 @@ def plot_statistical_tests(results_df):
     plt.show()
 
 # Example usage
-schema_path = "./dataset/survey_results_schema.csv"  # Replace with your schema file path
-public_path = "./dataset/survey_results_public.csv"  # Replace with your public data file path
-output_path="./result/simulated_responses.csv"   # Output file path
-key="123"
+schema_path = "../dataset/survey_results_schema.csv"  # Replace with your schema file path
+public_path = "../dataset/survey_results_public.csv"  # Replace with your public data file path
+output_path="../results/simulated_responses_gpt_RAG"   # Output folder
+key=""
 
 # ask_gpt_to_generate_professional_responses(schema_path, public_path, output_path, key)# you need to add it
 # compare_distributions(public_path, output_path)

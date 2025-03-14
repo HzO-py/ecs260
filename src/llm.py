@@ -30,6 +30,12 @@ def ask_gpt_to_generate_professional_responses(schema_path, public_path, output_
     for _, row in tqdm(savr_qnames.iterrows(), total=len(savr_qnames), desc="Processing qnames"):
         qname, question = row["qname"], row["question"]
         
+        os.makedirs(output_path, exist_ok=True)
+        pkl_path = os.path.join(output_path, f"{qname}.pkl")
+        if os.path.exists(pkl_path):
+            print(f"{qname} already processed. Skipping...")
+            continue
+
         if qname in public_df.columns:
             data = public_df[qname].dropna()
             response_count = len(data)
@@ -70,13 +76,26 @@ def ask_gpt_to_generate_professional_responses(schema_path, public_path, output_
                         print(f"Error parsing GPT response: {e}")
             
             for resp in generated_responses:
+                if isinstance(resp, dict): 
+                    resp = resp.get("option", "Unknown")
                 full_response = options_dict.get(resp, "Unknown")  # Map back to full text
                 simulated_data.append({"qname": qname, "question": question, "response": full_response})
-    
-    simulated_df = pd.DataFrame(simulated_data)
-    if not simulated_df.empty:
-        simulated_df.to_csv(output_path, index=False, encoding="utf-8")
-        print(f"Simulated responses saved to {output_path}")
-    else:
-        print("Warning: No responses were generated!")
+                simulated_df = pd.DataFrame(simulated_data)
+
+            if not simulated_df.empty:
+                try:
+                    simulated_df.to_pickle(pkl_path)
+                    print(f"Saved {qname} data to {pkl_path}")
+                except Exception as e:
+                    print(f"Failed to save {qname} data: {e}")
+
+    print("All qnames processed and saved!")
+
+    all_files = [os.path.join(output_path, f) for f in os.listdir(output_path) if f.endswith(".pkl")]
+    df_list = [pd.read_pickle(f) for f in all_files]
+    final_df = pd.concat(df_list, ignore_index=True)
+    output_path=os.path.join(output_path,'total_results.csv')
+    final_df.to_csv(output_path, index=False, encoding="utf-8")
+
+    return
 

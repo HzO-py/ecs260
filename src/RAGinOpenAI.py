@@ -8,6 +8,33 @@ import random
 from tqdm import tqdm
 from llama_index.core import SimpleDirectoryReader,GPTVectorStoreIndex
 from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.core import StorageContext, load_index_from_storage
+import concurrent.futures
+
+def load_single_index(index_folder, i):
+    """Loads a single index file if it exists."""
+    filename = f"index_{i}.json"
+    file_path = os.path.join(index_folder, filename)
+    
+    if os.path.exists(file_path):
+        storage_context = StorageContext.from_defaults(persist_dir=file_path)
+        return i, load_index_from_storage(storage_context)
+    return None  # Return None if file does not exist
+
+def load_indexes_parallel(index_folder, num_workers=8):
+    """Loads index files in parallel using ThreadPoolExecutor."""
+    index_storage = {}
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=num_workers) as executor:
+        futures = {executor.submit(load_single_index, index_folder, i): i for i in range(1, 158)}
+
+        for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures), desc="Loading Indexes"):
+            result = future.result()
+            if result:
+                i, index_data = result
+                index_storage[i] = index_data  # Store in dictionary if successfully loaded
+
+    return index_storage
 
 def filter_savr_qnames(schema_path):
     """Extract qnames where selector is 'SAVR' from schema file (starting from row 18)."""
@@ -30,9 +57,18 @@ def ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, out
     openai.api_key = key
     client = openai
     simulated_data = []
+
+    print('Please wait for a long time to load indexes.....')
+    index_storage = load_indexes_parallel("../dataset/indexes", num_workers=8)  # It will take a long time!!!!!
     
     for _, row in tqdm(savr_qnames.iterrows(), total=len(savr_qnames), desc="Processing qnames"):
         qname, question = row["qname"], row["question"]
+
+        os.makedirs(output_path, exist_ok=True)
+        pkl_path = os.path.join(output_path, f"{qname}.pkl")
+        if os.path.exists(pkl_path):
+            print(f"{qname} already processed. Skipping...")
+            continue
         
         if qname in public_df.columns:
             data = public_df[qname].dropna()
@@ -50,33 +86,11 @@ def ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, out
                 while len(generated_responses) < total_limit:
                     batch = 1
 
-                    dataset_folder = "dataset"
-                    rag_folder = os.path.join(dataset_folder, "RAG_processed")
-                    # mapping_path = os.path.join(dataset_folder, "file_mapping.txt")
-                    random_value = random.randint(1, 157)
-
-                    filename = f"{random_value}.txt"
-                    file_path = os.path.join(rag_folder, filename)
-
-                    # mapping = {}
-                    # with open(mapping_path, "r") as f:
-                    #     for line in f:
-                    #         print(line)
-                    #         key, value = line.strip().split("\t")
-                    #         mapping[key] = value
-
-                    # if filename in mapping:
-                    #     mapped_name = mapping[filename]
-                    #     # print(f"Randomly selected file: {filename}")
-                    #     # print(f"Mapped to: {mapped_name}")
-
-                    #     with open(file_path, "r") as file:
-                    #         content = file.read()
-
-                    embed_model = OpenAIEmbedding(client=client)
-
-                    reader = SimpleDirectoryReader(input_files=[file_path])
-                    index = GPTVectorStoreIndex.from_documents(reader.load_data())
+                    while True:
+                        random_value = random.randint(1, 157)
+                        if random_value in index_storage:  
+                            index = index_storage[random_value]
+                            break  
 
                     # Initialize the query engine
                     query_engine = index.as_query_engine(similarity_top_k=3)
@@ -101,20 +115,33 @@ def ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, out
                         simulated_responses = json.loads(response.choices[0].message.content)
                         if "responses" in simulated_responses and isinstance(simulated_responses["responses"], list):
                             generated_responses.extend(simulated_responses["responses"])
-                            pbar.update(len(simulated_responses["responses"]))
                         else:
                             print(f"Unexpected response format: {simulated_responses}")
+                        pbar.update(len(simulated_responses["responses"]))
+
                     except Exception as e:
                         print(f"Error parsing GPT response: {e}")
             
             for resp in generated_responses:
+                if isinstance(resp, dict): 
+                    resp = resp.get("option", "Unknown")
                 full_response = options_dict.get(resp, "Unknown")  # Map back to full text
                 simulated_data.append({"qname": qname, "question": question, "response": full_response})
-    
-    simulated_df = pd.DataFrame(simulated_data)
-    if not simulated_df.empty:
-        simulated_df.to_csv(output_path, index=False, encoding="utf-8")
-        print(f"Simulated responses saved to {output_path}")
-    else:
-        print("Warning: No responses were generated!")
+                simulated_df = pd.DataFrame(simulated_data)
 
+            if not simulated_df.empty:
+                try:
+                    simulated_df.to_pickle(pkl_path)
+                    print(f"Saved {qname} data to {pkl_path}")
+                except Exception as e:
+                    print(f"Failed to save {qname} data: {e}")
+
+    print("All qnames processed and saved!")
+
+    all_files = [os.path.join(output_path, f) for f in os.listdir(output_path) if f.endswith(".pkl")]
+    df_list = [pd.read_pickle(f) for f in all_files]
+    final_df = pd.concat(df_list, ignore_index=True)
+    output_path=os.path.join(output_path,'total_results.csv')
+    final_df.to_csv(output_path, index=False, encoding="utf-8")
+
+    return

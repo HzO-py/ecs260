@@ -5,7 +5,7 @@ from llama_index.core import SimpleDirectoryReader,GPTVectorStoreIndex
 from llama_index.embeddings.openai import OpenAIEmbedding
 
 def generate_response(query):
-    openai.api_key = "123" #replace by your key
+    openai.api_key = "" #replace by your key
     client = openai
     embed_model = OpenAIEmbedding(client=client)
 
