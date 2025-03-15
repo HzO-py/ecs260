@@ -59,7 +59,7 @@ def ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, out
     simulated_data = []
 
     print('Please wait for a long time to load indexes.....')
-    index_storage = load_indexes_parallel("../dataset/indexes", num_workers=8)  # It will take a long time!!!!!
+    index_storage = load_indexes_parallel("./dataset/indexes", num_workers=8)  # It will take a long time!!!!!
     
     for _, row in tqdm(savr_qnames.iterrows(), total=len(savr_qnames), desc="Processing qnames"):
         qname, question = row["qname"], row["question"]
@@ -87,7 +87,7 @@ def ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, out
                     batch = 1
 
                     while True:
-                        random_value = random.randint(1, 157)
+                        random_value = random.randint(1, 158)
                         if random_value in index_storage:  
                             index = index_storage[random_value]
                             break  
