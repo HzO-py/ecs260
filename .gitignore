@@ -4,4 +4,5 @@ __pycache__/
 .DS_Store
 dataset/RAG_processed
 dataset/indexes
-results/simulated_responses_gpt_RAG
+results/Simulated_RAG_llama
+src/__pycache__/

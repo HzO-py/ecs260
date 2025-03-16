@@ -15,7 +15,7 @@ import re
 
 
 # Load the Llama model
-# llm = Llama(model_path="/Users/christina_cyq/desktop/ecs260000/models/llama-2-7b.Q4_K_M.gguf", n_ctx=4096)
+# llm = Llama(model_path="./models/llama-2-7b.Q4_K_M.gguf", n_ctx=4096)
 
 
 # prompt = "What is artificial intelligence?"
@@ -26,7 +26,7 @@ import re
 # print(response["choices"][0]["text"].strip())
 
 
-LLAMA_API_KEY = "Key"  # Replace with your actual key
+LLAMA_API_KEY = "LLAMA_KEY"  # Replace with your actual key
 llama = LlamaAPI(LLAMA_API_KEY)
 
 def ask_llama_api(prompt):
@@ -86,13 +86,14 @@ def ask_llama_to_generate_professional_responses(schema_path, public_path, outpu
             # print(f"Formatted Options: {formatted_options}")
             
             generated_responses = []
-            total_limit = 2000
+            total_limit = 1000
 
             with tqdm(total=total_limit, desc=f"Generating responses for {qname}") as pbar:
                 while len(generated_responses) < total_limit:
-                    batch = 1000
+                    batch = 10
                     prompt = (
-                        f"Please answer the following survey question in a structured JSON format.\n\n"
+                        f"Please answer the following survey question with single choice in a strictly structured JSON format.\n\n"
+                        f"Example of JSON format: {{\"responses\": [\"A\", \"B\", \"C\"]}}\n\n"
                         f"Question: {question}\nOptions: {formatted_options}\n\n"
                         f"Generate exactly {batch} responses, ensuring that each choice reflects a realistic human decision-making process. "
                         f"Use only the corresponding option letters (A, B, C, etc.) and return the responses in a JSON list format."
@@ -102,35 +103,10 @@ def ask_llama_to_generate_professional_responses(schema_path, public_path, outpu
                     # response = llm(prompt, max_tokens=512)
                     response_text = ask_llama_api(prompt)
                     copy = response_text
-                    response_text = response_text.strip()
-                    # print(f"responses: {response_text}")
-                    # response_text = re.sub(r"```jsonfor\s*", "", response_text)  # Removes `jsonfor`
-                    # response_text = re.sub(r"```json\s*|\s*```", "", response_text, flags=re.DOTALL) 
 
-                    # if not response_text.startswith("["):
-                    #     response_text = "[" + response_text
-
-                    if response_text.startswith('He'):  # Detects an unclosed string
-                        response_text += '"'  # Close it properly
-                    
-                    if not response_text.endswith('\"') and not response_text.endswith(']') and not response_text.endswith(','):
-                        response_text += '"'
-                    
-                    response_text = re.sub(r'^.*?\[', '[', response_text, flags=re.DOTALL)
-
-                    # Remove trailing commas before the closing bracket
-
-
-                    # Ensure JSON array closes properly if missing `]`
-                    if response_text.count("[") > response_text.count("]"):
-                        response_text += "]"
-                        
-                    response_text = re.sub(r",\s*(?=\])", "", response_text)
-
-                    # Wrap inside a valid JSON object if missing
-                    response_text = '{"responses": ' + response_text + '}'
-
-                    # print(f"response text: {response_text}")
+                    response_text = re.sub(r'^.*?\{', '{', response_text, flags=re.DOTALL)
+                    match = re.search(r'^(.*})', response_text, flags=re.DOTALL)
+                    response_text = match.group(1) if match else response_text  # Keep only valid JSON part
 
                     try:
                         # Extract and parse response from Llama
@@ -164,8 +140,9 @@ def ask_llama_to_generate_professional_responses(schema_path, public_path, outpu
     else:
         print("Warning: No responses were generated!")
 
-schema_path="survey_results_schema.csv"
-public_path="survey_results_public.csv"
-output_path="simulated_responses.csv"
-# ask_llama_to_generate_professional_responses(schema_path, public_path, output_path)# you need to add it
+
+schema_path="./dataset/survey_results_schema.csv"
+public_path="./dataset/survey_results_public.csv"
+output_path="./results/simulated_responses_llama_0.csv"
+ask_llama_to_generate_professional_responses(schema_path, public_path, output_path)# you need to add it
 # compare_distributions(public_path, output_path)

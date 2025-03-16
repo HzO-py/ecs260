@@ -169,12 +169,11 @@ def plot_statistical_tests(results_df):
     plt.show()
 
 # Example usage
-schema_path = "./dataset/survey_results_schema.csv"  # Replace with your schema file path
-public_path = "./dataset/survey_results_public.csv"  # Replace with your public data file path
-output_path="./results/simulated_responses_gpt_RAG"   # Output folder
-key="s"
-
+# schema_path = "./dataset/survey_results_schema.csv"  # Replace with your schema file path
+# public_path = "./dataset/survey_results_public.csv"  # Replace with your public data file path
+# output_path="./results/simulated_responses_llama_RAG"   # Output folder
+key=""
 # ask_gpt_to_generate_professional_responses(schema_path, public_path, output_path, key)# you need to add it
 # compare_distributions(public_path, output_path)
-ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, output_path, key)# you need to add it
-compare_distributions(public_path, output_path)
+# ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, output_path, key)# you need to add it
+# compare_distributions(public_path, output_path)
