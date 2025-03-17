@@ -4,7 +4,9 @@
 
 3. Link to the extracted indexes(compressed), please uncompress and place this indexes folder inside the dataset folder: https://drive.google.com/file/d/1WfLOnpHwQibGF--W0VpoLhJO-aanIEMl/view?usp=drive_link. It is based on the processed  RAG vector dataset mentioned below to save time for RAG.
 
-4. update schema_path,public_path,output_path, index_path,and the key of your LLM in the “key” in main.py
+4. Update schema_path,public_path, index_path,and key with your openai api key in main.py.
+
+5. Create output folder and update path in main.py.
 
 5. Based on your requirement, run the zero-shot or RAG as prompt strategy choosing llama, deepseek or chatgpt as using LLM. The using of chatgpt and deepseek needs to open the corresponding file and comment out part of the code according to the comment, and uncomment part of the code. Besides, if you want to use deepseek or llama,you should open the corresponding file and input your LLM key.
 

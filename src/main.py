@@ -8,8 +8,8 @@ from RAG_llama import ask_llama_to_generate_rag_responses
 # Example usage
 schema_path = "../dataset/survey_results_schema.csv"  # Replace with your schema file path
 public_path = "../dataset/survey_results_public.csv"  # Replace with your public data file path
-output_path="../results/RAG_gpt"   # Output folder
 index_path="../dataset/indexes"  # Replace with your index file path
+output_path="../results/RAG_gpt"   # create your Output folder
 key=""
 model_csv_paths = {
     "zeroshot_gpt": "zeroshot_gpt.csv",
