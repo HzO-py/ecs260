@@ -1,0 +1,8 @@
+amethyst-0
+Traceback (most recent call last):
+  File "index.py", line 88, in <module>
+    sorted_files = get_sorted_files(rag_folder)
+  File "index.py", line 81, in get_sorted_files
+    total_size += size
+UnboundLocalError: local variable 'total_size' referenced before assignment
+srun: error: amethyst-0: task 0: Exited with exit code 1

@@ -1,0 +1,6 @@
+amethyst-0
+Traceback (most recent call last):
+  File "index.py", line 7, in <module>
+    from llama_index.schema import Document
+ModuleNotFoundError: No module named 'llama_index.schema'
+srun: error: amethyst-0: task 0: Exited with exit code 1

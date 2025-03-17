@@ -1,0 +1,55 @@
+amethyst-0
+Index 文件 ../dataset/indexes/index_1.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_2.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_3.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_4.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_5.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_6.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_7.json 已存在，跳过。
+文件 ../dataset/RAG_processed/8.txt 太大（260087281 bytes），跳过。
+Index 文件 ../dataset/indexes/index_9.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_10.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_11.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_12.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_13.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_14.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_15.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_16.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_17.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_18.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_19.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_20.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_21.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_22.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_23.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_24.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_25.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_26.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_27.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_28.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_29.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_30.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_31.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_32.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_33.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_34.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_35.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_36.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_37.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_38.json 已存在，跳过。
+Retrying llama_index.embeddings.openai.base.get_embeddings in 0.012832190483016759 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}.
+处理文件 ../dataset/RAG_processed/39.txt 时出错: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+文件 ../dataset/RAG_processed/40.txt 太大（66295475 bytes），跳过。
+Retrying llama_index.embeddings.openai.base.get_embeddings in 0.8526700173811599 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}.
+处理文件 ../dataset/RAG_processed/41.txt 时出错: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+文件 ../dataset/RAG_processed/42.txt 太大（102078773 bytes），跳过。
+Retrying llama_index.embeddings.openai.base.get_embeddings in 0.8126812782685647 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}.
+处理文件 ../dataset/RAG_processed/43.txt 时出错: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+文件 ../dataset/RAG_processed/44.txt 太大（43052325 bytes），跳过。
+Retrying llama_index.embeddings.openai.base.get_embeddings in 0.1508176584669516 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}.
+处理文件 ../dataset/RAG_processed/45.txt 时出错: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+Index 文件 ../dataset/indexes/index_46.json 已存在，跳过。
+文件 ../dataset/RAG_processed/47.txt 太大（98318955 bytes），跳过。
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 684772.0 ON amethyst-0 CANCELLED AT 2025-03-14T05:56:20 ***
+slurmstepd: error: *** JOB 684772 ON amethyst-0 CANCELLED AT 2025-03-14T05:56:20 ***

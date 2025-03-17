@@ -1,0 +1,102 @@
+amethyst-0
+选取 99 个文件
+[133, 73, 25, 20, 33, 31, 28, 12, 80, 72, 14, 30, 78, 11, 18, 82, 1, 37, 81, 34, 22, 7, 85, 23, 75, 15, 83, 92, 9, 139, 94, 86, 13, 35, 43, 84, 149, 51, 29, 144, 87, 95, 10, 74, 16, 19, 17, 77, 76, 98, 36, 53, 6, 38, 99, 32, 140, 112, 79, 21, 101, 41, 2, 27, 145, 71, 142, 24, 106, 113, 46, 65, 136, 89, 60, 114, 103, 69, 146, 120, 70, 64, 107, 66, 131, 121, 102, 125, 5, 111, 137, 134, 153, 3, 26, 118, 55, 104, 150]
+处理文件 ../dataset/RAG_processed/133.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/73.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_25.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_20.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_33.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_31.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_28.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_12.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/80.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/72.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_14.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_30.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/78.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_11.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_18.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/82.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_1.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_37.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/81.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_34.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_22.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_7.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/85.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_23.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/75.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_15.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/83.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/92.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_9.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/139.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/94.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/86.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_13.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_35.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/43.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/84.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/149.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/51.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_29.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/144.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/87.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/95.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_10.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/74.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_16.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_19.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_17.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/77.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/76.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_98.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_36.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/53.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_6.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_38.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/99.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_32.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/140.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/112.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/79.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_21.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/101.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/41.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_2.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_27.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/145.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/71.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/142.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_24.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/106.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/113.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_46.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/65.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/136.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/89.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/60.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/114.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/103.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/69.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/146.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/120.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/70.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/64.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/107.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/66.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/131.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/121.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/102.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/125.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_5.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/111.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/137.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/134.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/153.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_3.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_26.json 已存在，跳过。
+处理文件 ../dataset/RAG_processed/118.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/55.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/104.txt 时出错: `llama-index-readers-file` package not found
+处理文件 ../dataset/RAG_processed/150.txt 时出错: `llama-index-readers-file` package not found

@@ -1,0 +1,23 @@
+amethyst-0
+选取 99 个文件
+[133, 73, 25, 20, 33, 31, 28, 12, 80, 72, 14, 30, 78, 11, 18, 82, 1, 37, 81, 34, 22, 7, 85, 23, 75, 15, 83, 92, 9, 139, 94, 86, 13, 35, 43, 84, 149, 51, 29, 144, 87, 95, 10, 74, 16, 19, 17, 77, 76, 98, 36, 53, 6, 38, 99, 32, 140, 112, 79, 21, 101, 41, 2, 27, 145, 71, 142, 24, 106, 113, 46, 65, 136, 89, 60, 114, 103, 69, 146, 120, 70, 64, 107, 66, 131, 121, 102, 125, 5, 111, 137, 134, 153, 3, 26, 118, 55, 104, 150]
+Traceback (most recent call last):
+  File "/home/lzqhzo/.conda/envs/ppg2abp_new/lib/python3.8/site-packages/llama_index/core/readers/file/base.py", line 52, in _try_loading_included_file_formats
+    from llama_index.readers.file import (
+ImportError: cannot import name 'DocxReader' from 'llama_index.readers.file' (unknown location)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "index.py", line 91, in <module>
+    process_file(file_name)
+  File "index.py", line 36, in process_file
+    documents = reader.load_data()
+  File "/home/lzqhzo/.conda/envs/ppg2abp_new/lib/python3.8/site-packages/llama_index/core/readers/file/base.py", line 700, in load_data
+    SimpleDirectoryReader.load_file(
+  File "/home/lzqhzo/.conda/envs/ppg2abp_new/lib/python3.8/site-packages/llama_index/core/readers/file/base.py", line 518, in load_file
+    default_file_reader_cls = SimpleDirectoryReader.supported_suffix_fn()
+  File "/home/lzqhzo/.conda/envs/ppg2abp_new/lib/python3.8/site-packages/llama_index/core/readers/file/base.py", line 67, in _try_loading_included_file_formats
+    raise ImportError("`llama-index-readers-file` package not found")
+ImportError: `llama-index-readers-file` package not found
+srun: error: amethyst-0: task 0: Exited with exit code 1

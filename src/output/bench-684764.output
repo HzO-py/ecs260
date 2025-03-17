@@ -1,0 +1,11 @@
+amethyst-0
+Index 文件 ../dataset/indexes/index_1.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_2.json 已存在，跳过。
+文件 ../dataset/RAG_processed/3.txt 的 index 已保存到 ../dataset/indexes/index_3.json
+文件 ../dataset/RAG_processed/4.txt 的 index 已保存到 ../dataset/indexes/index_4.json
+Index 文件 ../dataset/indexes/index_5.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_6.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_7.json 已存在，跳过。
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 684764 ON amethyst-0 CANCELLED AT 2025-03-14T05:02:29 ***
+slurmstepd: error: *** STEP 684764.0 ON amethyst-0 CANCELLED AT 2025-03-14T05:02:29 ***

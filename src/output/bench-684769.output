@@ -1,0 +1,44 @@
+amethyst-0
+Index 文件 ../dataset/indexes/index_1.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_2.json 已存在，跳过。Index 文件 ../dataset/indexes/index_3.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_4.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_5.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_6.json 已存在，跳过。
+
+Index 文件 ../dataset/indexes/index_9.json 已存在，跳过。Index 文件 ../dataset/indexes/index_7.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_10.json 已存在，跳过。
+
+Index 文件 ../dataset/indexes/index_11.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_12.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_13.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_14.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_15.json 已存在，跳过。
+文件 ../dataset/RAG_processed/8.txt 太大（260087281 bytes），采用分块处理。Index 文件 ../dataset/indexes/index_16.json 已存在，跳过。
+
+Index 文件 ../dataset/indexes/index_18.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_19.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_20.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_22.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_23.json 已存在，跳过。
+文件 ../dataset/RAG_processed/17.txt 的 index 已保存到 ../dataset/indexes/index_17.json
+Index 文件 ../dataset/indexes/index_25.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_26.json 已存在，跳过。
+文件 ../dataset/RAG_processed/21.txt 的 index 已保存到 ../dataset/indexes/index_21.json
+Index 文件 ../dataset/indexes/index_28.json 已存在，跳过。
+文件 ../dataset/RAG_processed/27.txt 的 index 已保存到 ../dataset/indexes/index_27.json
+Index 文件 ../dataset/indexes/index_30.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_31.json 已存在，跳过。
+Retrying llama_index.embeddings.openai.base.get_embeddings in 0.9904353741366726 seconds as it raised RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for text-embedding-ada-002 in organization org-X86Hl2EMhcQBX1mrVn9mvGNw on tokens per min (TPM): Limit 1000000, Used 1000000, Requested 4116. Please try again in 246ms. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}.
+文件 ../dataset/RAG_processed/29.txt 的 index 已保存到 ../dataset/indexes/index_29.json
+Index 文件 ../dataset/indexes/index_33.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_34.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_35.json 已存在，跳过。
+文件 ../dataset/RAG_processed/24.txt 的 index 已保存到 ../dataset/indexes/index_24.json
+Index 文件 ../dataset/indexes/index_37.json 已存在，跳过。
+文件 ../dataset/RAG_processed/36.txt 的 index 已保存到 ../dataset/indexes/index_36.json
+文件 ../dataset/RAG_processed/39.txt 太大（16427004 bytes），采用分块处理。
+文件 ../dataset/RAG_processed/32.txt 的 index 已保存到 ../dataset/indexes/index_32.json
+文件 ../dataset/RAG_processed/40.txt 太大（66295475 bytes），采用分块处理。
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 684769.0 ON amethyst-0 CANCELLED AT 2025-03-14T05:09:33 ***
+slurmstepd: error: *** JOB 684769 ON amethyst-0 CANCELLED AT 2025-03-14T05:09:33 ***

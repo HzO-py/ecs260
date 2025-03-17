@@ -1,0 +1,68 @@
+amethyst-0
+Index 文件 ../dataset/indexes/index_1.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_2.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_3.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_4.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_5.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_6.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_7.json 已存在，跳过。
+文件 ../dataset/RAG_processed/8.txt 超过 10000 行，只处理前 10000 行。
+处理文件 ../dataset/RAG_processed/8.txt 时出错: `llama-index-readers-file` package not found
+Index 文件 ../dataset/indexes/index_9.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_10.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_11.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_12.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_13.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_14.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_15.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_16.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_17.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_18.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_19.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_20.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_21.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_22.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_23.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_24.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_25.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_26.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_27.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_28.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_29.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_30.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_31.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_32.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_33.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_34.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_35.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_36.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_37.json 已存在，跳过。
+Index 文件 ../dataset/indexes/index_38.json 已存在，跳过。
+文件 ../dataset/RAG_processed/39.txt 超过 10000 行，只处理前 10000 行。
+处理文件 ../dataset/RAG_processed/39.txt 时出错: `llama-index-readers-file` package not found
+文件 ../dataset/RAG_processed/40.txt 超过 10000 行，只处理前 10000 行。
+处理文件 ../dataset/RAG_processed/40.txt 时出错: `llama-index-readers-file` package not found
+文件 ../dataset/RAG_processed/41.txt 超过 10000 行，只处理前 10000 行。
+处理文件 ../dataset/RAG_processed/41.txt 时出错: `llama-index-readers-file` package not found
+文件 ../dataset/RAG_processed/42.txt 超过 10000 行，只处理前 10000 行。
+处理文件 ../dataset/RAG_processed/42.txt 时出错: `llama-index-readers-file` package not found
+Traceback (most recent call last):
+  File "/home/lzqhzo/.conda/envs/ppg2abp_new/lib/python3.8/site-packages/llama_index/core/readers/file/base.py", line 52, in _try_loading_included_file_formats
+    from llama_index.readers.file import (
+ImportError: cannot import name 'DocxReader' from 'llama_index.readers.file' (unknown location)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "index.py", line 96, in <module>
+    process_file(i)
+  File "index.py", line 67, in process_file
+    documents = reader.load_data()
+  File "/home/lzqhzo/.conda/envs/ppg2abp_new/lib/python3.8/site-packages/llama_index/core/readers/file/base.py", line 700, in load_data
+    SimpleDirectoryReader.load_file(
+  File "/home/lzqhzo/.conda/envs/ppg2abp_new/lib/python3.8/site-packages/llama_index/core/readers/file/base.py", line 518, in load_file
+    default_file_reader_cls = SimpleDirectoryReader.supported_suffix_fn()
+  File "/home/lzqhzo/.conda/envs/ppg2abp_new/lib/python3.8/site-packages/llama_index/core/readers/file/base.py", line 67, in _try_loading_included_file_formats
+    raise ImportError("`llama-index-readers-file` package not found")
+ImportError: `llama-index-readers-file` package not found
+srun: error: amethyst-0: task 0: Exited with exit code 1
