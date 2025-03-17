@@ -1,3 +1,7 @@
+# Diversity in LLM-Simulated Survey Responses: A Research based on Stack Overflow Survey Questions
+
+## Steps to run this code
+
 1. Download dataset: https://cdn.sanity.io/files/jo7n4k8s/production/262f04c41d99fea692e0125c342e446782233fe4.zip/stack-overflow-developer-survey-2024.zip
 
 2. Clone the code repository and place survey_results_schema.csv and survey_results_public.csv from the dataset into the project directory.
@@ -13,6 +17,8 @@
 6. Based on your requirement, compare different distribution
 
 7. Run main.py.
+
+## Related resources
 
 For the RAG vector dataset, here is the link for the original dataset: https://archive.org/details/stackexchange_20240930
 
