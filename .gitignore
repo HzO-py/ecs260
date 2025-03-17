@@ -5,5 +5,4 @@ __pycache__/
 dataset/RAG_processed
 dataset/indexes
 results/Simulated_RAG_llama
-results/simulated_responses_gpt_RAG
 src/__pycache__/
