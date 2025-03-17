@@ -1,0 +1,84 @@
+Q_label,ChoiceLabel,OriginalOption
+Q1,Choice 1,A few times per month or weekly
+Q1,Choice 2,A few times per week
+Q1,Choice 3,Daily or almost daily
+Q1,Choice 4,Less than once per month or monthly
+Q1,Choice 5,Multiple times per day
+Q2,Choice 1,No
+Q2,Choice 2,Not sure/can't remember
+Q2,Choice 3,Yes
+Q3,Choice 1,A few times per month or weekly
+Q3,Choice 2,A few times per week
+Q3,Choice 3,Daily or almost daily
+Q3,Choice 4,I have never participated in Q&A on Stack Overflow
+Q3,Choice 5,Less than once per month or monthly
+Q3,Choice 6,Multiple times per day
+Q4,Choice 1,Neutral
+Q4,Choice 2,"No, not at all"
+Q4,Choice 3,"No, not really"
+Q4,Choice 4,Not sure
+Q4,Choice 5,"Yes, definitely"
+Q4,Choice 6,"Yes, somewhat"
+Q5,Choice 1,"No, and I don't plan to"
+Q5,Choice 2,"No, but I plan to soon"
+Q5,Choice 3,Yes
+Q6,Choice 1,Favorable
+Q6,Choice 2,Indifferent
+Q6,Choice 3,Unfavorable
+Q6,Choice 4,Unsure
+Q6,Choice 5,Very favorable
+Q6,Choice 6,Very unfavorable
+Q7,Choice 1,Highly distrust
+Q7,Choice 2,Highly trust
+Q7,Choice 3,Neither trust nor distrust
+Q7,Choice 4,Somewhat distrust
+Q7,Choice 5,Somewhat trust
+Q8,Choice 1,Bad at handling complex tasks
+Q8,Choice 2,"Good, but not great at handling complex tasks"
+Q8,Choice 3,Neither good or bad at handling complex tasks
+Q8,Choice 4,Very poor at handling complex tasks
+Q8,Choice 5,Very well at handling complex tasks
+Q9,Choice 1,I'm not sure
+Q9,Choice 2,No
+Q9,Choice 3,Yes
+Q10,Choice 1,No
+Q10,Choice 2,Yes
+Q11,Choice 1,Individual contributor
+Q11,Choice 2,People manager
+Q12,Choice 1,15-30 minutes a day
+Q12,Choice 2,30-60 minutes a day
+Q12,Choice 3,60-120 minutes a day
+Q12,Choice 4,Less than 15 minutes a day
+Q12,Choice 5,Over 120 minutes a day
+Q13,Choice 1,15-30 minutes a day
+Q13,Choice 2,30-60 minutes a day
+Q13,Choice 3,60-120 minutes a day
+Q13,Choice 4,Less than 15 minutes a day
+Q13,Choice 5,Over 120 minutes a day
+Q14,Choice 1,Cloud only (single or multi-cloud)
+Q14,Choice 2,Hybrid (on-prem and cloud)
+Q14,Choice 3,On-prem
+Q15,Choice 1,A coworker
+Q15,Choice 2,AI-powered search (free)
+Q15,Choice 3,AI-powered search (paid)
+Q15,Choice 4,"Do search of internal share drives/storage locations for documentation"
+Q15,Choice 5,Internal Developer portal
+Q15,Choice 6,Microsoft Teams search
+Q15,Choice 7,Other:
+Q15,Choice 8,Slack search
+Q15,Choice 9,Traditional public search engine
+Q16,Choice 1,Banking/Financial Services
+Q16,Choice 2,Computer Systems Design and Services
+Q16,Choice 3,Energy
+Q16,Choice 4,Fintech
+Q16,Choice 5,Government
+Q16,Choice 6,Healthcare
+Q16,Choice 7,Higher Education
+Q16,Choice 8,Insurance
+Q16,Choice 9,"Internet, Telecomm or Information Services"
+Q16,Choice 10,Manufacturing
+Q16,Choice 11,Media & Advertising Services
+Q16,Choice 12,Other:
+Q16,Choice 13,Retail and Consumer Services
+Q16,Choice 14,Software Development
+Q16,Choice 15,"Transportation, or Supply Chain"

@@ -1,0 +1,17 @@
+Q_label,qname,question
+Q1,SOVisitFreq,How frequently would you say you visit Stack Overflow?
+Q2,SOAccount,Do you have a Stack Overflow account?
+Q3,SOPartFreq,"How frequently would you say you participate in Q&A on Stack Overflow? By participate we mean ask, answer, vote for, or comment on questions."
+Q4,SOComm,Do you consider yourself a member of the Stack Overflow community?
+Q5,AISelect,Do you currently use AI tools in your development process? *
+Q6,AISent,How favorable is your stance on using AI tools as part of your development workflow?
+Q7,AIAcc,How much do you trust the accuracy of the output from AI tools as part of your development workflow?
+Q8,AIComplex,How well do the AI tools you use in your development workflow handle complex tasks?
+Q9,AIThreat,Do you believe AI is a threat to your current job?
+Q10,TBranch,Would you like to participate in the Professional Developer Series?
+Q11,ICorPM,Are you an individual contributor or people manager?
+Q12,TimeSearching,"On an average day, how much time do you typically spend searching for answers or solutions to problems you encounter at work? ."
+Q13,TimeAnswering,"On an average day, how much time do you typically spend answering questions you get asked at work?"
+Q14,ProfessionalCloud,"At my company, our applications, databases and services are hosted:"
+Q15,ProfessionalQuestion,"When you have a technical question at work, where do you first go to get an answer?"
+Q16,Industry,What industry is the company you work for in?
