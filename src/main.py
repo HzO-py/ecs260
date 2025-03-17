@@ -10,7 +10,7 @@ schema_path = "../dataset/survey_results_schema.csv"  # Replace with your schema
 public_path = "../dataset/survey_results_public.csv"  # Replace with your public data file path
 index_path="../dataset/indexes"  # Replace with your index file path
 output_path="../results/RAG_gpt"   # create your Output folder
-key=""
+key="OPENAI_API_KEY"
 model_csv_paths = {
     "zeroshot_gpt": "zeroshot_gpt.csv",
     "zeroshot_deepseek": "zeroshot_deepseek.csv",
