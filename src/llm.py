@@ -23,8 +23,16 @@ def ask_gpt_to_generate_professional_responses(schema_path, public_path, output_
     savr_qnames = filter_savr_qnames(schema_path)
     public_df = pd.read_csv(public_path, encoding="utf-8", low_memory=False)
     
+
+     # Using gpt-4o-mini
     client = openai.OpenAI(api_key=key)
     
+    # Using deepseek
+    openai.api_key = key
+    client=openai.OpenAI(
+        api_key="deekseek-key",
+        base_url="https://api.deepseek.com"
+    )
     simulated_data = []
     
     for _, row in tqdm(savr_qnames.iterrows(), total=len(savr_qnames), desc="Processing qnames"):

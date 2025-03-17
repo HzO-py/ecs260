@@ -53,9 +53,17 @@ def ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, out
     savr_qnames = filter_savr_qnames(schema_path)
     public_df = pd.read_csv(public_path, encoding="utf-8", low_memory=False)
     
+    # Using gpt-4o-mini
     # client = openai.OpenAI(api_key=key)
+    # client = openai
+
+
+    # Using deepseek
     openai.api_key = key
-    client = openai
+    client=openai.OpenAI(
+        api_key="deepseek_key",
+        base_url="https://api.deepseek.com"
+    )
     simulated_data = []
 
     print('Please wait for a long time to load indexes.....')
@@ -81,10 +89,10 @@ def ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, out
             formatted_options = ", ".join([f"{key}: {val}" for key, val in options_dict.items()])
             
             generated_responses = []
-            total_limit=1
+            total_limit=1000
             with tqdm(total=total_limit, desc=f"Generating responses for {qname}") as pbar:
                 while len(generated_responses) < total_limit:
-                    batch = 1
+                    batch = 10
 
                     while True:
                         random_value = random.randint(1, 158)
@@ -106,7 +114,8 @@ def ask_gpt_to_generate_professional_responses_RAG(schema_path, public_path, out
                     )
 
                     response = client.chat.completions.create(
-                        model="gpt-4o-mini",
+                        # model="gpt-4o-mini",
+                        model="deepseek-chat",
                         messages=[{"role": "user", "content": prompt}],
                         response_format={"type": "json_object"}
                     )
