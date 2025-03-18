@@ -162,18 +162,9 @@ def plot_statistical_tests(results_df):
     plt.show()
 
 def plot_distribution_for_qname(q_label, qname, real_distribution, model_distributions, model_order=None, save_dir="../results"):
-    """
-    参数：
-      - qname: 问题名称，用于图表标题与文件名
-      - real_distribution: pd.Series，人类回答分布（索引为选项，值为频率）
-      - model_distributions: dict，键为模型名称，值为该模型的回答分布（pd.Series）
-      - model_order: 指定显示顺序，若为 None 则按字典顺序显示
-      - save_dir: 保存图片的目录
-    """
     if model_order is None:
         model_order = list(model_distributions.keys())
     
-    # 统一所有出现过的选项（并集），对缺失选项补 0
     all_options = set(real_distribution.index)
     for dist in model_distributions.values():
         all_options = all_options.union(dist.index)
@@ -190,14 +181,12 @@ def plot_distribution_for_qname(q_label, qname, real_distribution, model_distrib
     
     fig, ax = plt.subplots(figsize=(10, 6))
     x = np.arange(len(all_options))
-    total_groups = len(model_order) + 1  # 人类 + 各模型
+    total_groups = len(model_order) + 1  
     bar_width = 0.8 / total_groups
-    offset = - (total_groups - 1) / 2 * bar_width  # 使所有柱子居中显示
+    offset = - (total_groups - 1) / 2 * bar_width 
 
-    # 绘制人类分布（蓝色）
     ax.bar(x + offset, human_dist.values, bar_width, label="Human", color="blue", alpha=0.7)
     
-    # 绘制各模型分布
     for i, m in enumerate(model_order):
         current_offset = offset + (i + 1) * bar_width
         ax.bar(x + current_offset, model_dist_filled[m].values, bar_width, label=m, alpha=0.7)
@@ -219,20 +208,15 @@ def plot_distribution_for_qname(q_label, qname, real_distribution, model_distrib
 
 
 def plot_all_qname_distributions(qname_dists, save_dir="../results"):
-    """
-    遍历 qname_dists 中保存的每个 qname 的分布数据，绘制合并图。
-    qname_dists 的结构为：
-      { qname: { "human": pd.Series, "models": { model_name: pd.Series, ... } }, ... }
-    """
+
     qnames_options=[]
     for idx, (qname, dist_data) in enumerate(qname_dists.items(), start=1):
         model_distributions = dist_data.get("models", {})
         if not model_distributions:
             continue
-        # 可选：指定模型显示顺序
         model_order = ["zeroshot_gpt", "zeroshot_deepseek", "zeroshot_llama",
                        "RAG_gpt", "RAG_deepseek", "RAG_llama"]
-        # 保留已有的模型
+
         model_order = [m for m in model_order if m in model_distributions]
         options=plot_distribution_for_qname(f"Q{idx}", qname, dist_data["human"], model_distributions, model_order, save_dir=save_dir)
         qnames_options.append({
@@ -262,7 +246,7 @@ def plot_all_qname_distributions(qname_dists, save_dir="../results"):
         writer.writerows(question_rows)
     print(f"Saved question mapping CSV at: {question_csv}")
 
-    # 保存选项映射 CSV
+
     choice_csv = os.path.join(save_dir, "choice_map.csv")
     with open(choice_csv, mode="w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
@@ -271,41 +255,30 @@ def plot_all_qname_distributions(qname_dists, save_dir="../results"):
     print(f"Saved choice mapping CSV at: {choice_csv}")
 
 def compare_distributions_multiple_models(public_path, model_csv_paths):
-    """
-    参数：
-    -------
-    public_path : str
-        人类答案CSV文件的路径
-    model_csv_paths : dict
-        键为模型名称(如 'zeroshot_gpt')，值为对应CSV文件路径
-    """
+
     real_df = pd.read_csv(public_path, encoding="utf-8", low_memory=False)
     
     results = []
     qname_dists = {}
-    
-    # 遍历不同模型+prompt的CSV文件
+
     for model_name, csv_path in model_csv_paths.items():
         simulated_df = pd.read_csv(os.path.join('../results',csv_path), encoding="utf-8", low_memory=False)
         
-        # 遍历问题 qname
+
         for qname in tqdm(simulated_df["qname"].unique(), desc=f"Comparing distributions for {model_name}"):
             if qname in real_df.columns:
                 real_data = real_df[qname].dropna()
                 sim_data = simulated_df[simulated_df["qname"] == qname]["response"].dropna()
 
-                # 1) 在每个qname中随机只读取1000份答案
                 if len(sim_data) > 1000:
                     sim_data = sim_data.sample(n=1000, random_state=42)
 
-                # 只保留两者共有的选项，防止出现无效选项
                 valid_options = set(real_data.unique())
                 sim_data = sim_data[sim_data.isin(valid_options)]
 
                 if real_data.empty or sim_data.empty:
                     continue
 
-                # 计算分布
                 real_distribution = real_data.value_counts(normalize=True).sort_index()
                 sim_distribution = sim_data.value_counts(normalize=True).sort_index()
 
@@ -313,17 +286,14 @@ def compare_distributions_multiple_models(public_path, model_csv_paths):
                     qname_dists[qname] = {"human": real_distribution, "models": {}}
                 qname_dists[qname]["models"][model_name] = sim_distribution
 
-                # 统计检验
                 chi2_stat, chi2_p = chi_square_test(real_distribution, sim_distribution)
                 ks_stat, ks_p = ks_test(real_distribution, sim_distribution)
 
-                # 多样性指数
                 shannon_real = shannon_diversity(real_distribution)
                 shannon_sim = shannon_diversity(sim_distribution)
                 simpson_real = simpson_index(real_distribution)
                 simpson_sim = simpson_index(sim_distribution)
 
-                # KL 散度
                 kl_div = kl_divergence(real_distribution, sim_distribution)
 
                 results.append({
@@ -341,35 +311,21 @@ def compare_distributions_multiple_models(public_path, model_csv_paths):
                 })
 
     results_df = pd.DataFrame(results)
-    # 绘图
+
     plot_statistical_tests_multiple_models(results_df)
     plot_all_qname_distributions(qname_dists, save_dir="../results/distribution")
 
 
 def plot_statistical_tests_multiple_models(results_df):
-    """
-    生成 5 张图：
-      1) Chi-square(stat+p) -> chi-square.png
-      2) KS(stat+p) -> ks.png
-      3) Shannon(对比人类 vs LLM) -> shannon.png
-      4) Simpson(对比人类 vs LLM) -> simpson.png
-      5) KL Divergence -> kl.png
-    
-    其中每张图是2行x3列的子图，行首标注zeroshot/RAG，列顶标注gpt/deepseek/llama
-    去掉每个子图内的模型名标题。
-    """
 
-    # 2) 行首和列顶标签
     row_labels = ["zeroshot", "RAG"]
     col_labels = ["GPT4o-mini", "Deepseek", "llama"]
 
-    # 需要保证 models_in_order 的顺序与行列标签对应
     models_in_order = [
         "zeroshot_gpt", "zeroshot_deepseek", "zeroshot_llama",
         "RAG_gpt", "RAG_deepseek", "RAG_llama"
     ]
 
-    # 为了绘制更简洁，定义一个辅助函数：
     def get_row_col_axes(nrows=2, ncols=3, figsize=(18,10)):
         fig, axes = plt.subplots(nrows, ncols, figsize=figsize, sharey=False)
         return fig, axes
@@ -385,10 +341,12 @@ def plot_statistical_tests_multiple_models(results_df):
         col_idx = i % 3
         ax = axes_chi[row_idx, col_idx]
 
-        # 行首标注
         if col_idx == 0:
-            ax.set_ylabel(row_labels[row_idx], fontsize=18)
-        # 列顶标注
+            ax.annotate(row_labels[row_idx], 
+                        xy=(-0.1, 0.5), xycoords='axes fraction',  
+                        fontsize=18, ha="right", va="center",
+                        rotation=90)
+
         if row_idx == 0:
             ax.set_title(col_labels[col_idx], fontsize=18)
 
@@ -400,7 +358,7 @@ def plot_statistical_tests_multiple_models(results_df):
         ax.set_xticks(x)
         ax.set_xticklabels(labels, rotation=45, ha="right")
         ax.set_xlabel("Question")
-        ax.set_ylabel("p-value")       # 改成 p-value
+        ax.set_ylabel("p-value")      
         ax.grid(axis="y", linestyle="--", alpha=0.7)
 
     plt.tight_layout()
@@ -418,7 +376,10 @@ def plot_statistical_tests_multiple_models(results_df):
         ax = axes_ks[row_idx, col_idx]
 
         if col_idx == 0:
-            ax.set_ylabel(row_labels[row_idx], fontsize=18)
+            ax.annotate(row_labels[row_idx], 
+                        xy=(-0.1, 0.5), xycoords='axes fraction',  
+                        fontsize=18, ha="right", va="center",
+                        rotation=90)
         if row_idx == 0:
             ax.set_title(col_labels[col_idx], fontsize=18)
 
@@ -448,7 +409,10 @@ def plot_statistical_tests_multiple_models(results_df):
         ax = axes_shannon[row_idx, col_idx]
 
         if col_idx == 0:
-            ax.set_ylabel(row_labels[row_idx], fontsize=18)
+            ax.annotate(row_labels[row_idx], 
+                        xy=(-0.1, 0.5), xycoords='axes fraction', 
+                        fontsize=18, ha="right", va="center",
+                        rotation=90)
         if row_idx == 0:
             ax.set_title(col_labels[col_idx], fontsize=18)
 
@@ -460,6 +424,7 @@ def plot_statistical_tests_multiple_models(results_df):
         ax.set_xticks(x)
         ax.set_xticklabels(labels, rotation=45, ha="right")
         ax.set_xlabel("Question")
+        ax.set_ylabel("Shannon Index")
         ax.legend()
         ax.grid(axis="y", linestyle="--", alpha=0.7)
 
@@ -478,7 +443,10 @@ def plot_statistical_tests_multiple_models(results_df):
         ax = axes_simpson[row_idx, col_idx]
 
         if col_idx == 0:
-            ax.set_ylabel(row_labels[row_idx], fontsize=18)
+            ax.annotate(row_labels[row_idx], 
+                        xy=(-0.1, 0.5), xycoords='axes fraction',  
+                        fontsize=18, ha="right", va="center",
+                        rotation=90)
         if row_idx == 0:
             ax.set_title(col_labels[col_idx], fontsize=18)
 
@@ -490,6 +458,7 @@ def plot_statistical_tests_multiple_models(results_df):
         ax.set_xticks(x)
         ax.set_xticklabels(labels, rotation=45, ha="right")
         ax.set_xlabel("Question")
+        ax.set_ylabel("Simpson Index")
         ax.legend()
         ax.grid(axis="y", linestyle="--", alpha=0.7)
 
@@ -509,7 +478,10 @@ def plot_statistical_tests_multiple_models(results_df):
         ax = axes_kl[row_idx, col_idx]
 
         if col_idx == 0:
-            ax.set_ylabel(row_labels[row_idx], fontsize=18)
+            ax.annotate(row_labels[row_idx], 
+                        xy=(-0.1, 0.5), xycoords='axes fraction',  
+                        fontsize=18, ha="right", va="center",
+                        rotation=90)
         if row_idx == 0:
             ax.set_title(col_labels[col_idx], fontsize=18)
 
@@ -520,8 +492,34 @@ def plot_statistical_tests_multiple_models(results_df):
         ax.set_xticks(x)
         ax.set_xticklabels(labels, rotation=45, ha="right")
         ax.set_xlabel("Question")
+        ax.set_ylabel("KL divergence")
         ax.legend()
         ax.grid(axis="y", linestyle="--", alpha=0.7)
 
     plt.tight_layout()
     plt.savefig("../results/kl.png")
+
+    metrics = ["chi2_p", "ks_p", "kl_divergence"]
+
+    desc_stats = results_df.groupby("model_name")[metrics].agg(["mean", "min", "max", "std"]).reset_index()
+
+
+    desc_stats.columns = ["_".join(col).rstrip("_") for col in desc_stats.columns.values]
+
+    summary_csv = "../results/summary_stats.csv"
+    desc_stats.to_csv(summary_csv, index=False, encoding="utf-8")
+    print(f"Saved summary stats CSV at: {summary_csv}")
+
+    shannon_metrics = ["shannon_real", "shannon_sim"]
+    desc_shannon = results_df.groupby("model_name")[shannon_metrics].agg(["mean", "min", "max", "std"]).reset_index()
+    desc_shannon.columns = ["_".join(col).rstrip("_") for col in desc_shannon.columns.values]
+    shannon_csv = "../results/summary_stats_shannon.csv"
+    desc_shannon.to_csv(shannon_csv, index=False, encoding="utf-8")
+    print(f"Saved summary shannon CSV at: {shannon_csv}")
+
+    simpson_metrics = ["simpson_real", "simpson_sim"]
+    desc_simpson = results_df.groupby("model_name")[simpson_metrics].agg(["mean", "min", "max", "std"]).reset_index()
+    desc_simpson.columns = ["_".join(col).rstrip("_") for col in desc_simpson.columns.values]
+    simpson_csv = "../results/summary_stats_simpson.csv"
+    desc_simpson.to_csv(simpson_csv, index=False, encoding="utf-8")
+    print(f"Saved summary simpson CSV at: {simpson_csv}")

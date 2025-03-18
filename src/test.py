@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 from scipy.special import rel_entr
+from scipy.stats import ks_2samp
 
 def chi_square_test(real_distribution, sim_distribution):
     """Perform Chi-square test of independence between real and simulated responses."""

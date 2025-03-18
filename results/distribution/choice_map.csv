@@ -61,7 +61,7 @@ Q14,Choice 3,On-prem
 Q15,Choice 1,A coworker
 Q15,Choice 2,AI-powered search (free)
 Q15,Choice 3,AI-powered search (paid)
-Q15,Choice 4,"Do search of internal share drives/storage locations for documentation"
+Q15,Choice 4,"Do search of internal share drives/storage locations for documentation (i.e., not a structured knowledge base)"
 Q15,Choice 5,Internal Developer portal
 Q15,Choice 6,Microsoft Teams search
 Q15,Choice 7,Other:
